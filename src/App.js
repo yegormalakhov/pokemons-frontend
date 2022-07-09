@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Route, Routes, Link, NavLink } from "react-router-dom";
+import "./index.css";
+import Header from "./components/Header";
+import AllPokemons from "./components/AllPokemons";
+import SinglePokemon from "./components/SinglePokemon";
+import Arena from "./components/Arena";
+import Footer from "./components/Footer";
+import serverURL from "./serverURL";
 
-function App() {
+const App = () => {
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    fetch(`${serverURL}/pokemons`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setPokemons(data);
+      })
+      .catch((err) => console.log({ fetchAllArticlesError: err.message }));
+  }, []);
+
+  if (!pokemons) {
+    return <h1>Loading...</h1>;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
+        <Route
+          path="/pokemon/:id"
+          element={<SinglePokemon pokemons={pokemons} />}
+        />
+        <Route />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
