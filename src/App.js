@@ -7,6 +7,8 @@ import SinglePokemon from "./components/SinglePokemon";
 import Arena from "./components/Arena";
 import Footer from "./components/Footer";
 import serverURL from "./serverURL";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "react-bootstrap";
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -25,17 +27,22 @@ const App = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <div>
+    <>
       <Header />
-      <Routes>
-        <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
-        <Route
-          path="/pokemon/:id"
-          element={<SinglePokemon pokemons={pokemons} />}
-        />
-        <Route />
-      </Routes>
-    </div>
+      <main className="py-4">
+        <Container>
+          <Routes>
+            <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
+            <Route
+              path="/pokemon/:id"
+              element={<SinglePokemon pokemons={pokemons} />}
+            />
+            <Route />
+          </Routes>
+        </Container>
+      </main>
+      <Footer />
+    </>
   );
 };
 
