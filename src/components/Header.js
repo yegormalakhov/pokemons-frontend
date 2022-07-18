@@ -19,7 +19,7 @@ function Header() {
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/arena">
-              <i class="fa-solid fa-swords"></i> Arena
+              <i className="fa-solid fa-swords"></i> Arena
             </Nav.Link>
             <Nav.Link href="/logs">Logs</Nav.Link>
           </Nav>

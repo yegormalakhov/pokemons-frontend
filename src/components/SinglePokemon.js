@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const SinglePokemon = ({ pokemons }) => {
   const { id } = useParams();
-  console.log(Number(id));
+  // console.log(Number(id));
   const targetPokemon = pokemons.find((pokemon) => {
     return pokemon.id === Number(id); //change string to number for === Number()
   });
