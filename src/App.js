@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, Link, NavLink } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 import Header from "./components/Header";
 import AllPokemons from "./components/AllPokemons";
@@ -25,7 +26,7 @@ const App = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <div>
+    <div className="poke-body">
       <Header />
       <Routes>
         <Route path="/" element={<AllPokemons pokemons={pokemons} />} />

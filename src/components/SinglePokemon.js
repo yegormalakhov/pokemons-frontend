@@ -1,6 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const SinglePokemon = ({ pokemons }) => {
   const { id } = useParams();
@@ -15,23 +18,28 @@ const SinglePokemon = ({ pokemons }) => {
     return <div>So such Pokemon!</div>;
   }
 
-  return (
-    <div>
-      <h1>{targetPokemon.name.english}</h1>
-      <h3>{targetPokemon.type}</h3>
-      <div>{targetPokemon.base.HP}</div>
-      <div>{targetPokemon.base.Attack}</div>
-      <div>{targetPokemon.base.Defense}</div>
-      <div>{targetPokemon.base.Speed}</div>
-    </div>
-  );
+  return 
+    (
+    <Card 
+      className="all-pokemons-card"
+      key={targetPokemon.id}
+    >
+      <Card.Header>{targetPokemon.name.english}</Card.Header>
+      <Card.Body>
+        <Card.Title>{targetPokemon.type}</Card.Title>
+        <Card.Text>Scills</Card.Text>
+        <ListGroup variant="flush">
+        <ListGroup.Item>{targetPokemon.base.HP}</ListGroup.Item>
+        <ListGroup.Item>{targetPokemon.base.Attack}</ListGroup.Item>
+        <ListGroup.Item>{targetPokemon.base.Defense}</ListGroup.Item>
+        <ListGroup.Item>{targetPokemon.base.Speed}</ListGroup.Item>
+      </ListGroup>
+        <Button 
+          variant="danger"
+        >!!Fight!!!</Button>
+      </Card.Body>
+      </Card>
+      )
 };
+      
 export default SinglePokemon;
-// "HP": 30,
-// "Attack": 56,
-// "Defense": 35,
-// "Sp. Attack": 25,
-// "Sp. Defense": 35,
-// "Speed": 72
-
-//find a way for sp. attack...
