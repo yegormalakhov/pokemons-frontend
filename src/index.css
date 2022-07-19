@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #ffcb05;
   --main-text-color: black;
-  --main-card-bg-color: white;
+  --main-card-header-color: #2a75bb;
   --card-border-radius: 25px;
 }
 
@@ -9,6 +9,8 @@
   display: flex;
   justify-content: center;
 }
+
+/* All Pokemon Slider*/
 
 .poke-slider {
   background-color: var(--main-bg-color);
@@ -23,20 +25,69 @@
   align-items: center;
 }
 
-.poke-button {
+.poke-links {
   display: flex;
   justify-content: center;
   padding: 0.5rem;
   margin-top: 1rem;
 }
 
-/* .all-pokemons-card {
-  background-color: var(--main-card-bg-color);
+.poke-info {
+  color: #3c5aa6;
+  text-decoration: none
+}
+
+.poke-info:hover {
+  font-weight: bold;
+}
+
+.poke-fight {
+  color: red;
+  text-decoration: none
+}
+
+.poke-fight:hover {
+  color: red;
+  font-weight: bold;
+}
+
+/* Single Pokemon Card*/
+
+.card.one-poke-card {
+  width: 50%;
   border-radius: var(--card-border-radius);
-  margin: 2rem;
-  padding: 1rem;
-  width: 25%;
+  border: 5px solid var(--main-bg-color);
+}
+
+.one-poke-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
+  justify-content: center;
+  color: var(--main-card-header-color);
+  font-size: 3rem;
+}
+
+.one-poke-skills {
+  display: flex;
+  justify-content: center;
+  color: var(--main-card-header-color);
+  font-size: 1.5rem;
+}
+
+.list-group-item.one-poke-item {
+  display: flex;
+  justify-content: center;
+}
+
+.one-poke-fight {
+  display: flex;
+  justify-content: center;
+  color: red;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.one-poke-fight:hover {
+  color: red;
+  font-weight: bold;
+}

@@ -29,10 +29,17 @@ const App = () => {
     <div className="poke-body">
       <Header />
       <Routes>
-        <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
+        <Route 
+          path="/" 
+          element={
+            <AllPokemons pokemons={pokemons} />
+          } 
+        />
         <Route
           path="/pokemon/:id"
-          element={<SinglePokemon pokemons={pokemons} />}
+          element={
+            <SinglePokemon pokemons={pokemons} />
+          }
         />
         <Route />
       </Routes>
