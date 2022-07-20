@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, Link, NavLink } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 import Header from "./components/Header";
 import AllPokemons from "./components/AllPokemons";
@@ -43,43 +44,46 @@ const App = () => {
     return <h1>Loading...</h1>;
   }
   return (
-    <>
+    <div className="poke-body">
       <Header />
-      <main className="py-4">
-        <Container>
-          <Routes>
-            <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
-            <Route
-              path="/pokemon/:id"
-              element={<SinglePokemon pokemons={allPokemons} />}
-            />
-            {/* <Route path="/arena" element={<Arena />} />
-            <Route path="/statistics" element={<Statistics />} /> */}
-          </Routes>
-          <ReactPaginate
-            className="pagination py-4 justify-content-center"
-            nextLabel="Next >"
-            previousLabel="< Previous"
-            breakLabel="..."
-            onPageChange={handleChange}
-            pageCount={totalPages}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            nextClassName="page-item"
-            previousClassName="page-item"
-            nextLinkClassName="page-link"
-            previousLinkClassName="page-link"
-            breakClassName="page-item"
-            breakLinkClassName="page-link"
-            containerClassName="pagination"
-            activeClassName="active"
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={4}
-          />
-        </Container>
-      </main>
-      <Footer />
-    </>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            <AllPokemons pokemons={pokemons} />
+          } 
+        />
+        <Route
+          path="/pokemon/:id"
+          element={
+            <SinglePokemon pokemons={pokemons} />
+          }
+        />
+        <Route />
+        {/* <Route path="/arena" element={<Arena />} /> */}
+        {/* <Route path="/statistics" element={<Statistics />} /> */}
+      </Routes>
+      {/* <ReactPaginate
+      className="pagination py-4 justify-content-center"
+      nextLabel="Next >"
+      previousLabel="< Previous"
+      breakLabel="..."
+      onPageChange={handleChange}
+      pageCount={totalPages}
+      pageClassName="page-item"
+      pageLinkClassName="page-link"
+      nextClassName="page-item"
+      previousClassName="page-item"
+      nextLinkClassName="page-link"
+      previousLinkClassName="page-link"
+      breakClassName="page-item"
+      breakLinkClassName="page-link"
+      containerClassName="pagination"
+      activeClassName="active"
+      pageRangeDisplayed={3}
+      marginPagesDisplayed={4}
+    /> */}
+    </div>
   );
 };
 

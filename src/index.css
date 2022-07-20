@@ -1,22 +1,93 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --main-bg-color: #ffcb05;
+  --main-text-color: black;
+  --main-card-header-color: #2a75bb;
+  --card-border-radius: 25px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.poke-body {
+  display: flex;
+  justify-content: center;
 }
 
-main {
-  min-height: 80vh;
+/* All Pokemon Slider*/
+
+.poke-slider {
+  background-color: var(--main-bg-color);
+  border-radius: var(--card-border-radius);
+  width:50%;
+  padding: 1rem;
 }
 
-.preCard {
-  border: 1px solid orange;
-  margin: 1rem;
+.poke-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poke-links {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.poke-info {
+  color: #3c5aa6;
+  text-decoration: none
+}
+
+.poke-info:hover {
+  font-weight: bold;
+}
+
+.poke-fight {
+  color: red;
+  text-decoration: none
+}
+
+.poke-fight:hover {
+  color: red;
+  font-weight: bold;
+}
+
+/* Single Pokemon Card*/
+
+.card.one-poke-card {
+  width: 50%;
+  border-radius: var(--card-border-radius);
+  border: 5px solid var(--main-bg-color);
+}
+
+.one-poke-header {
+  display: flex;
+  justify-content: center;
+  color: var(--main-card-header-color);
+  font-size: 3rem;
+}
+
+.one-poke-skills {
+  display: flex;
+  justify-content: center;
+  color: var(--main-card-header-color);
+  font-size: 1.5rem;
+}
+
+.list-group-item.one-poke-item {
+  display: flex;
+  justify-content: center;
+}
+
+.one-poke-fight {
+  display: flex;
+  justify-content: center;
+  color: red;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.one-poke-fight:hover {
+  color: red;
+  font-weight: bold;
 }

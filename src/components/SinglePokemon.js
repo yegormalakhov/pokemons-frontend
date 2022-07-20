@@ -1,6 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const SinglePokemon = ({ pokemons }) => {
   const { id } = useParams();
@@ -12,26 +13,31 @@ const SinglePokemon = ({ pokemons }) => {
   // console.log(targetPokemon);
 
   if (!targetPokemon) {
-    return <div>So such Pokemon!</div>;
+    return <div>No such Pokemon!</div>;
   }
 
   return (
-    <div>
-      <h1>{targetPokemon.name.english}</h1>
-      <h3>{targetPokemon.type}</h3>
-      <div>{targetPokemon.base.HP}</div>
-      <div>{targetPokemon.base.Attack}</div>
-      <div>{targetPokemon.base.Defense}</div>
-      <div>{targetPokemon.base.Speed}</div>
-    </div>
-  );
+    <Card className="one-poke-card">
+      <Card.Header
+        className="one-poke-header"
+      >{targetPokemon.name.english}</Card.Header>
+      <Card.Body>
+        <Card.Text
+          className="one-poke-skills"
+        >Skills</Card.Text>
+          <ListGroup variant="flush">
+            <ListGroup.Item className="one-poke-item">HP: {targetPokemon.base.HP}</ListGroup.Item>
+            <ListGroup.Item className="one-poke-item">Attack: {targetPokemon.base.Attack}</ListGroup.Item>
+            <ListGroup.Item className="one-poke-item">Defense: {targetPokemon.base.Defense}</ListGroup.Item>
+            <ListGroup.Item className="one-poke-item">Speed: {targetPokemon.base.Speed}</ListGroup.Item>
+          </ListGroup>
+          <Link 
+            to={`/`}
+            className="one-poke-fight"
+          >FIGHT</Link>
+      </Card.Body>
+    </Card>
+  )
 };
+      
 export default SinglePokemon;
-// "HP": 30,
-// "Attack": 56,
-// "Defense": 35,
-// "Sp. Attack": 25,
-// "Sp. Defense": 35,
-// "Speed": 72
-
-//find a way for sp. attack...
