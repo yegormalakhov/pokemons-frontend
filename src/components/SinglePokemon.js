@@ -25,14 +25,16 @@ const SinglePokemon = ({ pokemons }) => {
         <Card.Text
           className="one-poke-skills"
         >Skills</Card.Text>
-          <ListGroup variant="flush">
-            <ListGroup.Item className="one-poke-item">HP: {targetPokemon.base.HP}</ListGroup.Item>
-            <ListGroup.Item className="one-poke-item">Attack: {targetPokemon.base.Attack}</ListGroup.Item>
-            <ListGroup.Item className="one-poke-item">Defense: {targetPokemon.base.Defense}</ListGroup.Item>
-            <ListGroup.Item className="one-poke-item">Speed: {targetPokemon.base.Speed}</ListGroup.Item>
-          </ListGroup>
+          <div className="pokelist">
+            <ListGroup variant="flush">
+              <ListGroup.Item className="one-poke-item">HP: {targetPokemon.base.HP}</ListGroup.Item>
+              <ListGroup.Item className="one-poke-item">Attack: {targetPokemon.base.Attack}</ListGroup.Item>
+              <ListGroup.Item className="one-poke-item">Defense: {targetPokemon.base.Defense}</ListGroup.Item>
+              <ListGroup.Item className="one-poke-item">Speed: {targetPokemon.base.Speed}</ListGroup.Item>
+            </ListGroup>
+          </div>
           <Link 
-            to={`/`}
+            to={`/arena`}
             className="one-poke-fight"
           >FIGHT</Link>
       </Card.Body>
