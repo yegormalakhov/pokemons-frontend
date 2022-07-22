@@ -8,6 +8,7 @@
 .poke-body {
   display: flex;
   justify-content: center;
+  margin: 5rem 0rem;
 }
 
 /* All Pokemon Slider*/
@@ -23,6 +24,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.poke-photo {
+  width: 40%;
+  border-radius: var(--card-border-radius);
+  margin-bottom: 1rem;
 }
 
 .poke-links {
@@ -57,6 +64,9 @@
   width: 50%;
   border-radius: var(--card-border-radius);
   border: 5px solid var(--main-bg-color);
+  background-image: url("https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .one-poke-header {
@@ -76,6 +86,13 @@
 .list-group-item.one-poke-item {
   display: flex;
   justify-content: center;
+  opacity: 0.5;
+  font-weight: bold;
+  border-radius: var(--card-border-radius);
+}
+
+.pokelist {
+  border-radius: var(--card-border-radius);
 }
 
 .one-poke-fight {
@@ -90,4 +107,14 @@
 .one-poke-fight:hover {
   color: red;
   font-weight: bold;
+}
+
+/* Poke Arena */
+
+.poke-fight-photo {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  border-radius: var(--card-border-radius);
+  margin: 5rem;
 }

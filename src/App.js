@@ -9,61 +9,75 @@ import Arena from "./components/Arena";
 import Footer from "./components/Footer";
 import serverURL from "./serverURL";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
+// import { Container } from "react-bootstrap";
+// import ReactPaginate from "react-paginate";
 
 const App = () => {
-  const [allPokemons, setAllPokemons] = useState([]);
   const [pokemons, setPokemons] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-
-  const pokemonsPerPage = 10;
-  const endOffset = itemOffset + pokemonsPerPage;
 
   useEffect(() => {
     fetch(`${serverURL}/pokemons`)
       .then((res) => res.json())
       .then((data) => {
-        setAllPokemons(data);
+        setPokemons(data);
       })
       .catch((err) => console.log({ fetchAllArticlesError: err.message }));
   }, []);
 
-  useEffect(() => {
-    setPokemons(allPokemons.slice(itemOffset, endOffset));
-    setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
-  }, [allPokemons, itemOffset]);
-
-  const handleChange = (page) => {
-    const newOffset = page.selected * pokemonsPerPage;
-    setItemOffset(newOffset);
-  };
-
-  if (!allPokemons) {
+  if (!pokemons) {
     return <h1>Loading...</h1>;
   }
   return (
-    <div className="poke-body">
+    <>
       <Header />
-      <Routes>
-        <Route 
-          path="/" 
-          element={
-            <AllPokemons pokemons={pokemons} />
-          } 
-        />
-        <Route
-          path="/pokemon/:id"
-          element={
-            <SinglePokemon pokemons={pokemons} />
-          }
-        />
-        <Route />
-        {/* <Route path="/arena" element={<Arena />} /> */}
-        {/* <Route path="/statistics" element={<Statistics />} /> */}
-      </Routes>
-      {/* <ReactPaginate
+        <div className="poke-body">
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <AllPokemons pokemons={pokemons} />
+              } 
+            />
+            <Route
+              path="/pokemon/:id"
+              element={
+                <SinglePokemon pokemons={pokemons} />
+              }
+            />
+            <Route />
+            <Route
+              path="/arena" 
+              element={
+                <Arena pokemons={pokemons} />
+              } />
+            {/* <Route path="/statistics" element={<Statistics />} /> */}
+          </Routes>
+        </div>
+      <Footer/>
+    </>
+  );
+};
+
+export default App;
+
+// ==> for pagination
+  // const [allPokemons, setAllPokemons] = useState([]);
+  // const [totalPages, setTotalPages] = useState(0);
+  // const [itemOffset, setItemOffset] = useState(0);
+
+  // const pokemonsPerPage = 10;
+  // const endOffset = itemOffset + pokemonsPerPage;
+  // useEffect(() => {
+  //   setPokemons(allPokemons.slice(itemOffset, endOffset));
+  //   setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
+  // }, [allPokemons, itemOffset]);
+
+  // const handleChange = (page) => {
+  //   const newOffset = page.selected * pokemonsPerPage;
+  //   setItemOffset(newOffset);
+  // };
+
+{/* <ReactPaginate
       className="pagination py-4 justify-content-center"
       nextLabel="Next >"
       previousLabel="< Previous"
@@ -83,8 +97,3 @@ const App = () => {
       pageRangeDisplayed={3}
       marginPagesDisplayed={4}
     /> */}
-    </div>
-  );
-};
-
-export default App;

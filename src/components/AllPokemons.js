@@ -14,6 +14,11 @@ export default function AllPokemons({pokemons}) {
           >
             <div className="poke-items">
               <h1>{pokemon.name.english}</h1>
+              <img 
+                className="poke-photo"
+                src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="{pokemon.name.english}"
+              />
               <h3>ID: {pokemon.id}</h3>
             </div>
             <Stack 
@@ -27,7 +32,7 @@ export default function AllPokemons({pokemons}) {
                 >Info</Link>
                 <div className="vr" />
                 <Link 
-                  to={`/`}
+                  to={`/arena`}
                   className="poke-fight"
                 >FIGHT</Link>
             </Stack>
