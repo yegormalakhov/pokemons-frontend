@@ -20,12 +20,15 @@ const App = () => {
   const [filteredData, setFilteredData] = useState([]);
   //set user pokemon state
   const handleChoice = (event) => {
-    // console.log(event.target.attributes.payload.value);
     const targetPokemonId = event.target.attributes.payload.value;
-    console.log(targetPokemonId);
+    // console.log(targetPokemonId);
     setUserPokemon(targetPokemonId);
+    // console.log(userPokemon);
   };
 
+  // useEffect(() => {
+  //   console.log(userPokemon);
+  // }, [userPokemon]);
   const handleFilter = (e) => {
     const searchWord = e.target.value;
 
@@ -68,7 +71,7 @@ const App = () => {
           />
         </div>
         <SearchResults
-          style={{position:"absolute"}}
+          style={{ position: "absolute" }}
           className="searchResultsList"
           filteredData={filteredData}
         />
@@ -77,7 +80,12 @@ const App = () => {
       <div className="main-container">
         <div className="poke-body">
           <Routes>
-            <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
+            <Route
+              path="/"
+              element={
+                <AllPokemons pokemons={pokemons} chosePokemon={handleChoice} />
+              }
+            />
             <Route
               path="/pokemon/:id"
               element={
@@ -88,7 +96,10 @@ const App = () => {
               }
             />
             <Route />
-            <Route path="/arena" element={<Arena pokemons={pokemons} />} />
+            <Route
+              path="/arena"
+              element={<Arena pokemons={pokemons} userPokemon={userPokemon} />}
+            />
             {/* <Route path="/statistics" element={<Statistics />} /> */}
           </Routes>
         </div>

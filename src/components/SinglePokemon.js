@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
-const SinglePokemon = ({ pokemons, chosePokemon, value }) => {
+const SinglePokemon = ({ pokemons, chosePokemon }) => {
   const { id } = useParams();
   const targetPokemon = pokemons.find((pokemon) => {
     return pokemon.id === Number(id); 
