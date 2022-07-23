@@ -3,11 +3,11 @@ import Carousel from "react-bootstrap/Carousel";
 import Stack from "react-bootstrap/Stack";
 
 export default function AllPokemons({ pokemons, chosePokemon }) {
-  // console.log(pokemons[1]);
-
   return (
     <>
-      <h1 className="mainTitle">Choose your pokemon!</h1>
+      <div className="mainTitle">
+        <h1>Choose your pokemon!</h1>
+      </div>
       <div className="poke-slider">
         <Carousel>
           {pokemons.map((pokemon) => (

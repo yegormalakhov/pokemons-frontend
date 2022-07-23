@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, Link, NavLink } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Header from "./components/Header";
 import AllPokemons from "./components/AllPokemons";
 import SinglePokemon from "./components/SinglePokemon";
+import Pokedex from "./components/Pokedex";
 import Arena from "./components/Arena";
 import Footer from "./components/Footer";
 import serverURL from "./serverURL";
@@ -95,7 +96,8 @@ const App = () => {
                 />
               }
             />
-            <Route />
+
+            <Route path="/pokemons" element={<Pokedex pokemons={pokemons} />} />
             <Route
               path="/arena"
               element={<Arena pokemons={pokemons} userPokemon={userPokemon} />}
@@ -104,7 +106,7 @@ const App = () => {
           </Routes>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
