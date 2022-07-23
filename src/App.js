@@ -41,7 +41,6 @@ const App = () => {
     <>
       <Header pokemons={pokemons}/>
       <div className="main-container">
-        <h1 className="mainTitle">Choose your pokemon!</h1>
         <div className="poke-body">
           <Routes>
             <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
@@ -60,7 +59,6 @@ const App = () => {
           </Routes>
         </div>
       </div>
-
       <Footer />
     </>
   );

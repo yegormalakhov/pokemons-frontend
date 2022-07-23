@@ -9,7 +9,8 @@
 /* .searchInput {
   display: flex;
   align-content: center;
-} */
+}  */
+
 #searchPokemon {
   color: black;
   height: 25px;
@@ -31,14 +32,20 @@
   display: none;
 }
 
+.navbar {
+ margin-bottom: 5rem;
+}
+
+/* Body */
+
 .poke-body {
   display: flex;
-  justify-content: center;
-  margin: 2rem 0rem 5rem 0rem;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 2rem 0rem 5rem 0rem; */
 }
 .mainTitle {
-  text-align: center;
-  margin: 1rem 0 0 0;
+  margin-bottom: 2rem;
 }
 
 .main-container {
@@ -46,6 +53,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Footer  */
+
+.poke-footer {
+  /* position: fixed; */
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
 }
 
 /* All Pokemon Slider*/
@@ -64,7 +80,7 @@
 }
 
 .poke-photo {
-  width: 40%;
+  width: 50%;
   border-radius: var(--card-border-radius);
   margin-bottom: 1rem;
 }
@@ -126,7 +142,6 @@
   justify-content: center;
   opacity: 0.5;
   font-weight: bold;
-  border-radius: var(--card-border-radius);
 }
 
 .pokelist {
@@ -156,3 +171,74 @@
   border-radius: var(--card-border-radius);
   margin: 5rem;
 }
+
+/* All Poke Carousel */
+
+/* @media (max-width: 768px) {
+  .navbar {
+    margin-bottom: 6rem;
+   }
+  .poke-slider {
+    width: 70%;
+  }
+  .poke-items {
+    padding: 0.5rem
+  }
+  .poke-photo {
+    width: 70%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .poke-links {
+    padding: 0rem;
+    margin-top: 0rem;
+  }
+  .poke-info {
+    font-size: 2rem;
+  }
+  .poke-fight {
+    font-size: 2rem;
+  }
+} */
+
+/* @media (max-width: 425px) {
+  body {
+    display: flex;
+  }
+  .mainTitle {
+    margin-top: 20rem;
+    font-size: 2.5rem;
+  }
+  .poke-footer {
+    margin-top: 20rem;
+  }
+  .poke-slider {
+    width: 80%;
+  }
+  .poke-name {
+    font-size: 3rem;
+  }
+  .poke-photo {
+    width: 80%;
+  }
+  .poke-info {
+    font-size: 2.5rem;
+  }
+  .poke-fight {
+    font-size: 2.5rem;
+  }
+} */
+
+/* One Poke Card */
+/* @media (max-width: 768px) {
+
+} */
+
+/* @media (max-width: 425px) {
+  .card.one-poke-card {
+    width: 80%;
+  }
+  .poke-footer {
+    margin-top: 10rem;
+  }
+} */

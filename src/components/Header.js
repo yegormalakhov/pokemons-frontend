@@ -6,7 +6,7 @@ import Search from "./Search";
 function Header({pokemons}) {
   return (
     <>
-      <Navbar bg="primary" variant="dark" collapseOnSelect>
+      <Navbar bg="primary" variant="dark" collapseOnSelect fixed="top">
         <Container>
           <Navbar.Brand href="/">
             <img
