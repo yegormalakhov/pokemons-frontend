@@ -14,6 +14,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--header-bg-color);
+  margin-bottom: 3rem;
 }
 .searchResultsList {
   position: absolute;
@@ -58,7 +59,8 @@
   /* margin: 2rem 0rem 5rem 0rem; */
 }
 .mainTitle {
-  margin-bottom: 2rem;
+  /* margin-top: 15rem; */
+  margin-bottom: 3rem;
 }
 
 .main-container {
@@ -185,12 +187,19 @@
   margin: 5rem;
 }
 
+/* Pokedex */
+
+.pokedex-container {
+  border: 5px solid red;
+  margin-top: 20rem;
+}
+
 /* All Poke Carousel */
 
-/* @media (max-width: 768px) {
-  .navbar {
-    margin-bottom: 6rem;
-   }
+@media (max-width: 768px) {
+  .mainTitle {
+    margin-top: 4rem;
+  }
   .poke-slider {
     width: 70%;
   }
@@ -212,15 +221,12 @@
   .poke-fight {
     font-size: 2rem;
   }
-} */
+}
 
-/* @media (max-width: 425px) {
-  body {
+@media (max-width: 425px) {
+  .navbar-items {
     display: flex;
-  }
-  .mainTitle {
-    margin-top: 20rem;
-    font-size: 2.5rem;
+    flex-direction: column;
   }
   .poke-footer {
     margin-top: 20rem;
@@ -240,18 +246,7 @@
   .poke-fight {
     font-size: 2.5rem;
   }
-} */
-
-/* One Poke Card */
-/* @media (max-width: 768px) {
-
-} */
-
-/* @media (max-width: 425px) {
   .card.one-poke-card {
     width: 80%;
   }
-  .poke-footer {
-    margin-top: 10rem;
-  }
-} */
+}
