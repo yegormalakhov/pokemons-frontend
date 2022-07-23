@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, Link, NavLink } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Header from "./components/Header";
 import AllPokemons from "./components/AllPokemons";
 import SinglePokemon from "./components/SinglePokemon";
+import Pokedex from "./components/Pokedex";
 import Arena from "./components/Arena";
 import Footer from "./components/Footer";
 import serverURL from "./serverURL";
@@ -77,7 +78,14 @@ const App = () => {
       <div className="main-container">
         <div className="poke-body">
           <Routes>
-            <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
+            <Route 
+              path="/" 
+              element={
+                <AllPokemons 
+                  pokemons={pokemons} 
+                />
+              } 
+            />
             <Route
               path="/pokemon/:id"
               element={
@@ -87,13 +95,27 @@ const App = () => {
                 />
               }
             />
-            <Route />
-            <Route path="/arena" element={<Arena pokemons={pokemons} />} />
+            <Route 
+              path="/pokemons"
+              element={
+                <Pokedex
+                  pokemons={pokemons}
+                />
+              }
+            />
+            <Route 
+              path="/arena" 
+              element={
+                <Arena
+                  pokemons={pokemons} 
+                />
+              } 
+            />
             {/* <Route path="/statistics" element={<Statistics />} /> */}
           </Routes>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

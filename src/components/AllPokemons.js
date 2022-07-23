@@ -1,13 +1,31 @@
 import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import Stack from 'react-bootstrap/Stack';
+import Pokedex from 'pokedex-promise-v2'
 
 export default function AllPokemons({pokemons}) {
   // console.log(pokemons[1]);
 
+  const P = new Pokedex();
+
+  (async () => {
+    // with Async/Await
+    try {
+      const golduckSpecies = await P.getPokemonSpeciesByName("golduck");
+      const englishName = golduckSpecies.names.filter(
+        (pokeAPIName) => pokeAPIName.language.name === "en"
+      )[0].name;
+      console.log(englishName);
+    } catch (error) {
+      throw error;
+    }
+  })();
+
   return (
     <>
-      <h1 className="mainTitle">Choose your pokemon!</h1>
+      <div className="mainTitle">
+        <h1>Choose your pokemon!</h1>
+      </div>
         <div className="poke-slider">
           <Carousel>
             {pokemons.map(pokemon => (
@@ -16,11 +34,19 @@ export default function AllPokemons({pokemons}) {
               >
                 <div className="poke-items">
                   <h1 className="poke-name">{pokemon.name.english}</h1>
-                  <img 
-                    className="poke-photo"
-                    src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                    alt="{pokemon.name.english}"
-                  />
+                  <a 
+                    href={`/pokemon/${pokemon.id}`}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center'
+                    }}  
+                  >
+                    <img
+                      src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                      alt="{pokemon.name.english}"
+                      className="poke-photo"
+                    /> 
+                  </a>
                 </div>
                 <Stack 
                   direction="horizontal" 
