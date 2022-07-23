@@ -22,12 +22,15 @@ const App = () => {
 
   //set user pokemon state
   const handleChoice = (event) => {
-    // console.log(event.target.attributes.payload.value);
     const targetPokemonId = event.target.attributes.payload.value;
-    console.log(targetPokemonId);
+    // console.log(targetPokemonId);
     setUserPokemon(targetPokemonId);
+    // console.log(userPokemon);
   };
 
+  // useEffect(() => {
+  //   console.log(userPokemon);
+  // }, [userPokemon]);
   const handleFilter = (e) => {
     const searchWord = e.target.value;
 
@@ -70,7 +73,7 @@ const App = () => {
           />
         </div>
         <SearchResults
-          style={{position:"absolute"}}
+          style={{ position: "absolute" }}
           className="searchResultsList"
           filteredData={filteredData}
         />
@@ -79,13 +82,11 @@ const App = () => {
       <div className="main-container">
         <div className="poke-body">
           <Routes>
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
-                <AllPokemons 
-                  pokemons={pokemons} 
-                />
-              } 
+                <AllPokemons pokemons={pokemons} chosePokemon={handleChoice} />
+              }
             />
             <Route
               path="/pokemon/:id"
@@ -96,21 +97,11 @@ const App = () => {
                 />
               }
             />
-            <Route 
-              path="/pokemons"
-              element={
-                <Pokedex
-                  pokemons={pokemons}
-                />
-              }
-            />
-            <Route 
-              path="/arena" 
-              element={
-                <Arena
-                  pokemons={pokemons} 
-                />
-              } 
+
+            <Route path="/pokemons" element={<Pokedex pokemons={pokemons} />} />
+            <Route
+              path="/arena"
+              element={<Arena pokemons={pokemons} userPokemon={userPokemon} />}
             />
             {/* <Route path="/statistics" element={<Statistics />} /> */}
           </Routes>
