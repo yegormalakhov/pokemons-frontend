@@ -1,24 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const SinglePokemon = ({ pokemons, chosePokemon }) => {
   const { id } = useParams();
+  const [image, setImage] = useState(null);
+
   const targetPokemon = pokemons.find((pokemon) => {
     return pokemon.id === Number(id); 
   });
 
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setImage(data);
+        console.log(data);
+      })
+      .catch((err) => console.log(err.message));
+  }, []);
+
+  if (!image) {
+    return <h1>Image is loading...</h1>;
+  }
 
   if (!targetPokemon) {
     return <div>No such Pokemon!</div>;
   }
 
   return (
-    <Card className="one-poke-card">
+    <Card 
+      className="one-poke-card"
+    >
       <Card.Header className="one-poke-header">
         {targetPokemon.name.english}
       </Card.Header>
+      <div style={{
+            display: 'flex',
+            justifyContent: 'center'
+      }}>
+        <Card.Img 
+          variant="top" 
+          src={image.sprites.front_default} 
+          style={{
+            width: '40%',
+          }}
+        />
+      </div>
       <Card.Body>
         <Card.Text className="one-poke-skills">Skills</Card.Text>
         <div className="pokelist">

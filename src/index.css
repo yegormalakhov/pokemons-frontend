@@ -130,12 +130,9 @@
 /* Single Pokemon Card*/
 
 .card.one-poke-card {
-  width: 50%;
+  width: 30%;
   border-radius: var(--card-border-radius);
-  border: 5px solid var(--main-bg-color);
-  background-image: url("https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
-  background-repeat: no-repeat;
-  background-size: cover;
+  border: 5px solid var(--main-bg-color)
 }
 
 .one-poke-header {
