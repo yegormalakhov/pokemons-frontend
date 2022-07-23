@@ -10,7 +10,7 @@ export default function AllPokemons({pokemons}) {
       <Carousel>
         {pokemons.map(pokemon => (
           <Carousel.Item 
-            key="{pokemon.id}"
+            key={pokemon.id}
           >
             <div className="poke-items">
               <h1>{pokemon.name.english}</h1>

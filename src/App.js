@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, Link, NavLink } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Header from "./components/Header";
 import AllPokemons from "./components/AllPokemons";
@@ -14,6 +14,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [userPokemon, setUserPokemon] = useState([]);
+
+
+  //set user pokemon state
+  const handleChoice = (event) => {
+    // console.log(event.target.attributes.payload.value);
+    const targetPokemonId = event.target.attributes.payload.value;
+    console.log(targetPokemonId);
+    setUserPokemon(targetPokemonId);
+  };
 
   useEffect(() => {
     fetch(`${serverURL}/pokemons`)
@@ -29,31 +39,29 @@ const App = () => {
   }
   return (
     <>
-      <Header />
+      <Header pokemons={pokemons}/>
+      <div className="main-container">
+        <h1 className="mainTitle">Choose your pokemon!</h1>
         <div className="poke-body">
           <Routes>
-            <Route 
-              path="/" 
-              element={
-                <AllPokemons pokemons={pokemons} />
-              } 
-            />
+            <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
             <Route
               path="/pokemon/:id"
               element={
-                <SinglePokemon pokemons={pokemons} />
+                <SinglePokemon
+                  pokemons={pokemons}
+                  chosePokemon={handleChoice}
+                />
               }
             />
             <Route />
-            <Route
-              path="/arena" 
-              element={
-                <Arena pokemons={pokemons} />
-              } />
+            <Route path="/arena" element={<Arena pokemons={pokemons} />} />
             {/* <Route path="/statistics" element={<Statistics />} /> */}
           </Routes>
         </div>
-      <Footer/>
+      </div>
+
+      <Footer />
     </>
   );
 };
@@ -61,23 +69,24 @@ const App = () => {
 export default App;
 
 // ==> for pagination
-  // const [allPokemons, setAllPokemons] = useState([]);
-  // const [totalPages, setTotalPages] = useState(0);
-  // const [itemOffset, setItemOffset] = useState(0);
+// const [allPokemons, setAllPokemons] = useState([]);
+// const [totalPages, setTotalPages] = useState(0);
+// const [itemOffset, setItemOffset] = useState(0);
 
-  // const pokemonsPerPage = 10;
-  // const endOffset = itemOffset + pokemonsPerPage;
-  // useEffect(() => {
-  //   setPokemons(allPokemons.slice(itemOffset, endOffset));
-  //   setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
-  // }, [allPokemons, itemOffset]);
+// const pokemonsPerPage = 10;
+// const endOffset = itemOffset + pokemonsPerPage;
+// useEffect(() => {
+//   setPokemons(allPokemons.slice(itemOffset, endOffset));
+//   setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
+// }, [allPokemons, itemOffset]);
 
-  // const handleChange = (page) => {
-  //   const newOffset = page.selected * pokemonsPerPage;
-  //   setItemOffset(newOffset);
-  // };
+// const handleChange = (page) => {
+//   const newOffset = page.selected * pokemonsPerPage;
+//   setItemOffset(newOffset);
+// };
 
-{/* <ReactPaginate
+{
+  /* <ReactPaginate
       className="pagination py-4 justify-content-center"
       nextLabel="Next >"
       previousLabel="< Previous"
@@ -96,4 +105,5 @@ export default App;
       activeClassName="active"
       pageRangeDisplayed={3}
       marginPagesDisplayed={4}
-    /> */}
+    /> */
+}

@@ -2,7 +2,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../media/Logo.png";
-function Header() {
+import Search from "./Search";
+function Header({pokemons}) {
   return (
     <>
       <Navbar bg="primary" variant="dark" collapseOnSelect>
@@ -18,10 +19,12 @@ function Header() {
           </Navbar.Brand>
           <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/pokemons">Pokedex</Nav.Link>
             <Nav.Link href="/arena">
               <i className="fa-solid fa-swords"></i> Arena
             </Nav.Link>
             <Nav.Link href="/logs">Logs</Nav.Link>
+            <Search style={{color:'black'}} placeholder={'search pokemon'}data={pokemons}/>
           </Nav>
         </Container>
       </Navbar>
