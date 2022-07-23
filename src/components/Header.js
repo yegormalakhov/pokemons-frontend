@@ -2,11 +2,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../media/Logo.png";
-import Search from "./Search";
-function Header({pokemons}) {
+// import Search from "./Search";
+
+function Header({ pokemons }) {
   return (
     <>
-      <Navbar bg="primary" variant="dark" collapseOnSelect>
+      <Navbar
+        className="border-0 shadow-none"
+        bg="primary"
+        variant="dark"
+        collapseOnSelect
+      >
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -23,8 +29,7 @@ function Header({pokemons}) {
             <Nav.Link href="/arena">
               <i className="fa-solid fa-swords"></i> Arena
             </Nav.Link>
-            <Nav.Link href="/logs">Logs</Nav.Link>
-            <Search style={{color:'black'}} placeholder={'search pokemon'}data={pokemons}/>
+            {/* <Nav.Link href="/logs">Logs</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>

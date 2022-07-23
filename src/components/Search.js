@@ -2,37 +2,39 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Search = ({ placeholder, data }) => {
-  const [filteredData, setFilteredData] = useState([]);
+const Search = ({ placeholder, data, handleFilter}) => {
+//   const [filteredData, setFilteredData] = useState([]);
 
-  const handleFilter = (e) => {
-    const searchWord = e.target.value;
+//   const handleFilter = (e) => {
+//     const searchWord = e.target.value;
 
-    const newFilter = data.filter((pokemon) => {
-      return pokemon.name.english
-        .toLowerCase()
-        .includes(searchWord.toLowerCase());
-    });
+//     const newFilter = data.filter((pokemon) => {
+//       return pokemon.name.english
+//         .toLowerCase()
+//         .includes(searchWord.toLowerCase());
+//     });
 
-    if (searchWord === "") {
-      setFilteredData([]);
-    } else {
-      setFilteredData(newFilter);
-    }
-  };
+//     if (searchWord === "") {
+//       setFilteredData([]);
+//     } else {
+//       setFilteredData(newFilter);
+//     }
+//   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(filteredData);
-    //need to add check existance of pokemon in data
-    //link to the correct route
-    // if()
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log(filteredData);
+//     //need to add check existance of pokemon in data
+//     //link to the correct route
+//     // if()
+//   };
 
   return (
     <div className="search">
       <div className="searchInput">
-        <form onSubmit={handleSubmit}>
+        <form 
+        // onSubmit={handleSubmit}
+        >
           <input
             id="searchPokemon"
             type="text"
@@ -41,7 +43,7 @@ const Search = ({ placeholder, data }) => {
           ></input>
         </form>
       </div>
-      {filteredData.length !== 0 && (
+      {/* {filteredData.length !== 0 && (
         <div className="dataResult">
           {filteredData.map((pokemon) => {
             return (
@@ -56,14 +58,9 @@ const Search = ({ placeholder, data }) => {
             );
           })}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
 export default Search;
-
-////   <div className="searchResultLink" key={index}>
-
-// {pokemon.name.english}
-//   </div>

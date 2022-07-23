@@ -11,18 +11,35 @@ import serverURL from "./serverURL";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Container } from "react-bootstrap";
 // import ReactPaginate from "react-paginate";
+import Search from "./components/Search";
+import SearchResults from "./components/searchResults";
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const [userPokemon, setUserPokemon] = useState([]);
-
-
+  const [filteredData, setFilteredData] = useState([]);
   //set user pokemon state
   const handleChoice = (event) => {
     // console.log(event.target.attributes.payload.value);
     const targetPokemonId = event.target.attributes.payload.value;
     console.log(targetPokemonId);
     setUserPokemon(targetPokemonId);
+  };
+
+  const handleFilter = (e) => {
+    const searchWord = e.target.value;
+
+    const newFilter = pokemons.filter((pokemon) => {
+      return pokemon.name.english
+        .toLowerCase()
+        .includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
   };
 
   useEffect(() => {
@@ -39,7 +56,24 @@ const App = () => {
   }
   return (
     <>
-      <Header pokemons={pokemons}/>
+      <div style={{ position: "relative" }}>
+        <div className="headerContainer">
+          <Header pokemons={pokemons} />
+          <Search
+            // className="searchContainer"
+            style={{ color: "black" }}
+            placeholder={"search pokemon"}
+            // data={pokemons}
+            handleFilter={handleFilter}
+          />
+        </div>
+        <SearchResults
+          style={{position:"absolute"}}
+          className="searchResultsList"
+          filteredData={filteredData}
+        />
+      </div>
+
       <div className="main-container">
         <h1 className="mainTitle">Choose your pokemon!</h1>
         <div className="poke-body">
