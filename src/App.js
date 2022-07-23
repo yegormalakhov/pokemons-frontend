@@ -19,6 +19,7 @@ const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const [userPokemon, setUserPokemon] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+
   //set user pokemon state
   const handleChoice = (event) => {
     // console.log(event.target.attributes.payload.value);

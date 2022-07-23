@@ -1,25 +1,9 @@
 import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import Stack from 'react-bootstrap/Stack';
-import Pokedex from 'pokedex-promise-v2'
 
 export default function AllPokemons({pokemons}) {
   // console.log(pokemons[1]);
-
-  const P = new Pokedex();
-
-  (async () => {
-    // with Async/Await
-    try {
-      const golduckSpecies = await P.getPokemonSpeciesByName("golduck");
-      const englishName = golduckSpecies.names.filter(
-        (pokeAPIName) => pokeAPIName.language.name === "en"
-      )[0].name;
-      console.log(englishName);
-    } catch (error) {
-      throw error;
-    }
-  })();
 
   return (
     <>
