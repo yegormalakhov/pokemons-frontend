@@ -8,7 +8,7 @@ const SinglePokemon = ({ pokemons, chosePokemon }) => {
   const [image, setImage] = useState(null);
 
   const targetPokemon = pokemons.find((pokemon) => {
-    return pokemon.id === Number(id); 
+    return pokemon.id === Number(id);
   });
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const SinglePokemon = ({ pokemons, chosePokemon }) => {
         console.log(data);
       })
       .catch((err) => console.log(err.message));
-  }, []);
+  }, [id]);
 
   if (!image) {
     return <h1>Image is loading...</h1>;
@@ -30,52 +30,54 @@ const SinglePokemon = ({ pokemons, chosePokemon }) => {
   }
 
   return (
-    <Card 
-      className="one-poke-card"
-    >
+    <Card className="one-poke-card">
       <Card.Header className="one-poke-header">
-        {targetPokemon.name.english}
+        <h2>{targetPokemon.name.english}</h2>
       </Card.Header>
-      <div style={{
-            display: 'flex',
-            justifyContent: 'center'
-      }}>
-        <Card.Img 
-          variant="top" 
-          src={image.sprites.front_default} 
-          style={{
-            width: '40%',
-          }}
-        />
-      </div>
-      <Card.Body>
-        <Card.Text className="one-poke-skills">Skills</Card.Text>
-        <div className="pokelist">
-          <ListGroup variant="flush">
-            <ListGroup.Item className="one-poke-item">
-              HP: {targetPokemon.base.HP}
-            </ListGroup.Item>
-            <ListGroup.Item className="one-poke-item">
-              Attack: {targetPokemon.base.Attack}
-            </ListGroup.Item>
-            <ListGroup.Item className="one-poke-item">
-              Defense: {targetPokemon.base.Defense}
-            </ListGroup.Item>
-            <ListGroup.Item className="one-poke-item">
-              Speed: {targetPokemon.base.Speed}
-            </ListGroup.Item>
-          </ListGroup>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ display: "flex" }}>
+          <Card.Img
+            variant="top"
+            src={image.sprites.front_default}
+            style={{
+              width: "400%",
+            }}
+          />
         </div>
-        <Link
-          to={`/arena`}
-          className="one-poke-fight"
-          //for chosing pokemon
-          onClick={chosePokemon}
-          payload={id}
-        >
-          FIGHT
-        </Link>
-      </Card.Body>
+        <Card.Body>
+          <Card.Text className="one-poke-skills">Skills</Card.Text>
+          <div className="pokelist">
+            <ListGroup variant="flush">
+              <ListGroup.Item className="one-poke-item">
+                HP: {targetPokemon.base.HP}
+              </ListGroup.Item>
+              <ListGroup.Item className="one-poke-item">
+                Attack: {targetPokemon.base.Attack}
+              </ListGroup.Item>
+              <ListGroup.Item className="one-poke-item">
+                Defense: {targetPokemon.base.Defense}
+              </ListGroup.Item>
+              <ListGroup.Item className="one-poke-item">
+                Speed: {targetPokemon.base.Speed}
+              </ListGroup.Item>
+            </ListGroup>
+          </div>
+        </Card.Body>
+      </div>
+      <Link
+        to={`/arena`}
+        className="one-poke-fight"
+        //for chosing pokemon
+        onClick={chosePokemon}
+        payload={id}
+      >
+        FIGHT
+      </Link>
     </Card>
   );
 };

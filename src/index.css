@@ -132,7 +132,7 @@
 .card.one-poke-card {
   width: 30%;
   border-radius: var(--card-border-radius);
-  border: 5px solid var(--main-bg-color)
+  border: 5px solid var(--main-bg-color);
 }
 
 .one-poke-header {
@@ -195,6 +195,7 @@
   width: 80vw;
   gap: 20px;
   align-items: center;
+  justify-content: center;
 }
 
 .resultBtn {
