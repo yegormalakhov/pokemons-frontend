@@ -37,7 +37,7 @@ const Arena = ({ userPokemon, pokemons }) => {
       <div className="matchCards">
         <Card className="one-poke-card">
           <Card.Header className="one-poke-header">
-            {findUserPokemon.name.english}
+            <h2>{findUserPokemon.name.english}</h2>
           </Card.Header>
           <Card.Body>
             <Card.Text className="one-poke-skills">Skills</Card.Text>
@@ -63,7 +63,7 @@ const Arena = ({ userPokemon, pokemons }) => {
         <p className="VS">VS</p>
         <Card className="one-poke-card">
           <Card.Header className="one-poke-header">
-            {findEnemyPokemon.name.english}
+            <h2>{findEnemyPokemon.name.english}</h2>
           </Card.Header>
           <Card.Body>
             <Card.Text className="one-poke-skills">Skills</Card.Text>
