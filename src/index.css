@@ -67,7 +67,7 @@
   height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Footer  */
@@ -130,9 +130,23 @@
 /* Single Pokemon Card*/
 
 .card.one-poke-card {
-  width: 30%;
+  width: 75%;
   border-radius: var(--card-border-radius);
   border: 5px solid var(--main-bg-color);
+  max-width: 350px;
+}
+.one-poke-card > div:nth-child(2) {
+  flex-direction: column;
+}
+@media (min-width: 640px) {
+  .one-poke-card > div:nth-child(2) {
+    max-width: 350px;
+    flex-direction: row;
+  }
+}
+
+.one-poke-card > div:nth-child(2) > div:nth-child(1) {
+  align-self: center;
 }
 
 .one-poke-header {
@@ -140,6 +154,10 @@
   justify-content: center;
   color: var(--main-card-header-color);
   font-size: 3rem;
+}
+
+.one-poke-header > h2 {
+  font-weight: bold;
 }
 
 .one-poke-skills {
@@ -166,12 +184,15 @@
   color: red;
   text-decoration: none;
   font-size: 2rem;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
+  background: #0e6ffd;
+  border-radius: 0 0 20px 20px;
 }
 
 .one-poke-fight:hover {
   color: red;
   font-weight: bold;
+  background: #e76655;
 }
 
 /* Poke Arena */
@@ -196,6 +217,13 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .matchCards {
+    flex-direction: row;
+  }
 }
 
 .resultBtn {
@@ -218,6 +246,7 @@
   font-weight: bold;
   font-size: 1.5rem;
   margin-top: 50px;
+  margin-inline: 2rem;
 }
 .pokedex-container {
   border: 5px solid red;
@@ -226,9 +255,9 @@
 /* All Poke Carousel */
 
 @media (max-width: 768px) {
-  .mainTitle {
+  /* .mainTitle {
     margin-top: 4rem;
-  }
+  } */
   .poke-slider {
     width: 70%;
   }

@@ -40,7 +40,7 @@ const SinglePokemon = ({ pokemons, chosePokemon }) => {
           justifyContent: "center",
         }}
       >
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", width: "50%" }}>
           <Card.Img
             variant="top"
             src={image.sprites.front_default}
