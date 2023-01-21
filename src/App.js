@@ -109,40 +109,75 @@ const App = () => {
 
 export default App;
 
-// ==> for pagination
 // const [allPokemons, setAllPokemons] = useState([]);
-// const [totalPages, setTotalPages] = useState(0);
-// const [itemOffset, setItemOffset] = useState(0);
+//   const [pokemons, setPokemons] = useState([]);
+//   const [totalPages, setTotalPages] = useState(0);
+//   const [itemOffset, setItemOffset] = useState(0);
 
-// const pokemonsPerPage = 10;
-// const endOffset = itemOffset + pokemonsPerPage;
-// useEffect(() => {
-//   setPokemons(allPokemons.slice(itemOffset, endOffset));
-//   setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
-// }, [allPokemons, itemOffset]);
+//   const pokemonsPerPage = 10;
+//   const endOffset = itemOffset + pokemonsPerPage;
 
-// const handleChange = (page) => {
-//   const newOffset = page.selected * pokemonsPerPage;
-//   setItemOffset(newOffset);
+//   useEffect(() => {
+//     fetch(`${serverURL}/pokemons`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setAllPokemons(data);
+//       })
+//       .catch((err) => console.log({ fetchAllArticlesError: err.message }));
+//   }, []);
+
+//   useEffect(() => {
+//     setPokemons(allPokemons.slice(itemOffset, endOffset));
+//     setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
+//   }, [allPokemons, itemOffset]);
+
+//   const handleChange = (page) => {
+//     const newOffset = page.selected * pokemonsPerPage;
+//     setItemOffset(newOffset);
+//   };
+
+//   if (!allPokemons) {
+//     return <h1>Loading...</h1>;
+//   }
+//   return (
+//     <>
+//       <Header />
+//       <main className="py-4">
+//         <Container>
+//           <Routes>
+//             <Route path="/" element={<AllPokemons pokemons={pokemons} />} />
+//             <Route
+//               path="/pokemon/:id"
+//               element={<SinglePokemon pokemons={allPokemons} />}
+//             />
+//             {/* <Route path="/arena" element={<Arena />} />
+//             <Route path="/statistics" element={<Statistics />} /> */}
+//           </Routes>
+//           <ReactPaginate
+//             className="pagination py-4 justify-content-center"
+//             nextLabel="Next >"
+//             previousLabel="< Previous"
+//             breakLabel="..."
+//             onPageChange={handleChange}
+//             pageCount={totalPages}
+//             pageClassName="page-item"
+//             pageLinkClassName="page-link"
+//             nextClassName="page-item"
+//             previousClassName="page-item"
+//             nextLinkClassName="page-link"
+//             previousLinkClassName="page-link"
+//             breakClassName="page-item"
+//             breakLinkClassName="page-link"
+//             containerClassName="pagination"
+//             activeClassName="active"
+//             pageRangeDisplayed={3}
+//             marginPagesDisplayed={4}
+//           />
+//         </Container>
+//       </main>
+//       <Footer />
+//     </>
+//   );
 // };
 
-/* <ReactPaginate
-      className="pagination py-4 justify-content-center"
-      nextLabel="Next >"
-      previousLabel="< Previous"
-      breakLabel="..."
-      onPageChange={handleChange}
-      pageCount={totalPages}
-      pageClassName="page-item"
-      pageLinkClassName="page-link"
-      nextClassName="page-item"
-      previousClassName="page-item"
-      nextLinkClassName="page-link"
-      previousLinkClassName="page-link"
-      breakClassName="page-item"
-      breakLinkClassName="page-link"
-      containerClassName="pagination"
-      activeClassName="active"
-      pageRangeDisplayed={3}
-      marginPagesDisplayed={4}
-    /> */
+// export default App;
