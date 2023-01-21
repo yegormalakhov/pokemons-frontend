@@ -16,7 +16,6 @@ const SinglePokemon = ({ pokemons, chosePokemon }) => {
       .then((response) => response.json())
       .then((data) => {
         setImage(data);
-        console.log(data);
       })
       .catch((err) => console.log(err.message));
   }, [id]);

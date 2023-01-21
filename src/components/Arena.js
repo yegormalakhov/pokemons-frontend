@@ -12,20 +12,16 @@ const Arena = ({ userPokemon, pokemons }) => {
     return pokemon.id === Number(userPokemon);
   });
 
-  console.log(findUserPokemon);
-
   const randomEnemyId = Math.floor(Math.random() * pokemons.length);
   const findEnemyPokemon = pokemons.find((pokemon) => {
     return pokemon.id === Number(randomEnemyId);
   });
 
   useEffect(() => {
-    // console.log(randomEnemyId);
     fetch(`https://pokeapi.co/api/v2/pokemon/${randomEnemyId}`)
       .then((response) => response.json())
       .then((data) => {
         setEnemyImage(data.sprites.front_default);
-        // console.log(data.sprites.front_default);
       })
       .catch((err) => console.log(err.message));
   }, []);
@@ -35,12 +31,10 @@ const Arena = ({ userPokemon, pokemons }) => {
       .then((response) => response.json())
       .then((data) => {
         setUserImage(data.sprites.front_default);
-        // console.log(data);
       })
       .catch((err) => console.log(err.message));
   }, []);
 
-  // console.log(userImage);
   if (!findUserPokemon) {
     return <h1>Please choose you pokemon first</h1>;
   }

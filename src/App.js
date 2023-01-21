@@ -19,18 +19,12 @@ const App = () => {
   const [pokemons, setPokemons] = useState([]);
   const [userPokemon, setUserPokemon] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-
   //set user pokemon state
   const handleChoice = (event) => {
     const targetPokemonId = event.target.attributes.payload.value;
-    // console.log(targetPokemonId);
     setUserPokemon(targetPokemonId);
-    // console.log(userPokemon);
   };
 
-  // useEffect(() => {
-  //   console.log(userPokemon);
-  // }, [userPokemon]);
   const handleFilter = (e) => {
     const searchWord = e.target.value;
 
@@ -59,6 +53,7 @@ const App = () => {
   if (!pokemons) {
     return <h1>Loading...</h1>;
   }
+
   return (
     <>
       <div style={{ position: "relative" }}>
@@ -131,8 +126,7 @@ export default App;
 //   setItemOffset(newOffset);
 // };
 
-{
-  /* <ReactPaginate
+/* <ReactPaginate
       className="pagination py-4 justify-content-center"
       nextLabel="Next >"
       previousLabel="< Previous"
@@ -152,4 +146,3 @@ export default App;
       pageRangeDisplayed={3}
       marginPagesDisplayed={4}
     /> */
-}
