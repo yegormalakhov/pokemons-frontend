@@ -10,25 +10,25 @@ import Arena from "./components/Arena";
 import Footer from "./components/Footer";
 import serverURL from "./serverURL";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { Container } from "react-bootstrap";
-// import ReactPaginate from "react-paginate";
+import { Container } from "react-bootstrap";
+import ReactPaginate from "react-paginate";
 import Search from "./components/Search";
 import SearchResults from "./components/searchResults";
 
 const App = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const [allPokemons, setAllPokemons] = useState([]);
   const [userPokemon, setUserPokemon] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  
   //set user pokemon state
-  const handleChoice = (event) => {
-    const targetPokemonId = event.target.attributes.payload.value;
+  const handleChoice = (e) => {
+    const targetPokemonId = e.target.attributes.payload.value;
     setUserPokemon(targetPokemonId);
   };
 
   const handleFilter = (e) => {
     const searchWord = e.target.value;
-
-    const newFilter = pokemons.filter((pokemon) => {
+    const newFilter = allPokemons.filter((pokemon) => {
       return pokemon.name.english
         .toLowerCase()
         .includes(searchWord.toLowerCase());
@@ -45,12 +45,12 @@ const App = () => {
     fetch(`${serverURL}/pokemons`)
       .then((res) => res.json())
       .then((data) => {
-        setPokemons(data);
+        setAllPokemons(data);
       })
       .catch((err) => console.log({ fetchAllArticlesError: err.message }));
   }, []);
 
-  if (!pokemons) {
+  if (!allPokemons) {
     return <h1>Loading...</h1>;
   }
 
@@ -58,12 +58,11 @@ const App = () => {
     <>
       <div style={{ position: "relative" }}>
         <div className="headerContainer">
-          <Header pokemons={pokemons} />
+          <Header pokemons={allPokemons} />
           <Search
-            // className="searchContainer"
+            className="searchContainer"
             style={{ color: "black" }}
             placeholder={"search pokemon"}
-            // data={pokemons}
             handleFilter={handleFilter}
           />
         </div>
@@ -76,46 +75,61 @@ const App = () => {
 
       <div className="main-container">
         <div className="poke-body">
+         
           <Routes>
             <Route
               path="/"
               element={
-                <AllPokemons pokemons={pokemons} chosePokemon={handleChoice} />
+                <AllPokemons
+                  pokemons={allPokemons}
+                  chosePokemon={handleChoice}
+                />
               }
             />
             <Route
               path="/pokemon/:id"
               element={
                 <SinglePokemon
-                  pokemons={pokemons}
+                  pokemons={allPokemons}
                   chosePokemon={handleChoice}
                 />
               }
             />
 
-            <Route path="/pokemons" element={<Pokedex pokemons={pokemons} />} />
+            <Route
+              path="/pokemons"
+              element={<Pokedex pokemons={allPokemons} />}
+            />
             <Route
               path="/arena"
-              element={<Arena pokemons={pokemons} userPokemon={userPokemon} />}
+              element={
+                <Arena pokemons={allPokemons} userPokemon={userPokemon} />
+              }
             />
             {/* <Route path="/statistics" element={<Statistics />} /> */}
           </Routes>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
 
 export default App;
 
-// const [allPokemons, setAllPokemons] = useState([]);
+//   const [allPokemons, setAllPokemons] = useState([]);
 //   const [pokemons, setPokemons] = useState([]);
+//   const [userPokemon, setUserPokemon] = useState([]);
+//   const [filteredData, setFilteredData] = useState([]);
 //   const [totalPages, setTotalPages] = useState(0);
 //   const [itemOffset, setItemOffset] = useState(0);
 
-//   const pokemonsPerPage = 10;
-//   const endOffset = itemOffset + pokemonsPerPage;
+//     if (searchWord === "") {
+//       setFilteredData([]);
+//     } else {
+//       setFilteredData(newFilter);
+//     }
+//   };
 
 //   useEffect(() => {
 //     fetch(`${serverURL}/pokemons`)
@@ -127,14 +141,10 @@ export default App;
 //   }, []);
 
 //   useEffect(() => {
-//     setPokemons(allPokemons.slice(itemOffset, endOffset));
-//     setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
-//   }, [allPokemons, itemOffset]);
+//     // setPokemons(allPokemons.slice(itemOffset, endOffset));
+//     // setTotalPages(Math.ceil(allPokemons.length / pokemonsPerPage));
 
-//   const handleChange = (page) => {
-//     const newOffset = page.selected * pokemonsPerPage;
-//     setItemOffset(newOffset);
-//   };
+//   }, [allPokemons, itemOffset]);
 
 //   if (!allPokemons) {
 //     return <h1>Loading...</h1>;
@@ -153,7 +163,7 @@ export default App;
 //             {/* <Route path="/arena" element={<Arena />} />
 //             <Route path="/statistics" element={<Statistics />} /> */}
 //           </Routes>
-//           <ReactPaginate
+//           {/* <ReactPaginate
 //             className="pagination py-4 justify-content-center"
 //             nextLabel="Next >"
 //             previousLabel="< Previous"
@@ -172,7 +182,7 @@ export default App;
 //             activeClassName="active"
 //             pageRangeDisplayed={3}
 //             marginPagesDisplayed={4}
-//           />
+//           /> */}
 //         </Container>
 //       </main>
 //       <Footer />

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const SearchResults = ({ filteredData }) => {
   return (
@@ -8,14 +7,14 @@ const SearchResults = ({ filteredData }) => {
         <div className="dataResult">
           {filteredData.map((pokemon) => {
             return (
-              <Link
+              <a
                 className="searchResultLink"
                 style={{ display: "block" }}
                 key={pokemon.id}
-                to={`/pokemon/${pokemon.id}`}
+                href={`/pokemon/${pokemon.id}`}
               >
                 {pokemon.name.english}
-              </Link>
+              </a>
             );
           })}
         </div>

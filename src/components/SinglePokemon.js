@@ -19,7 +19,8 @@ const SinglePokemon = ({ pokemons, chosePokemon }) => {
       })
       .catch((err) => console.log(err.message));
   }, [id]);
-
+  
+  console.log(image);
   if (!image) {
     return <h1>Image is loading...</h1>;
   }

@@ -1,43 +1,64 @@
-import { Link } from "react-router-dom";
-import Carousel from "react-bootstrap/Carousel";
+// import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+// import { async } from "q";
 import Stack from "react-bootstrap/Stack";
+import React, { useState, useEffect } from "react";
 
-export default function AllPokemons({ pokemons, chosePokemon }) {
+import { Link } from "react-router-dom";
+
+const AllPokemons = ({ pokemons, chosePokemon }) => {
+  const [randomPokemons, setRandomPokemons] = useState([]);
+  const [change, setChange] = useState(false);
+
+  const choseRandomPokemons = () => {
+    let randomNumbers = [];
+    for (let i = 0; i !== 5; i++) {
+      randomNumbers.push(Math.ceil(Math.random() * 809));
+    }
+    console.log(pokemons[randomNumbers[1]]);
+    let randomPokemons = [];
+    randomNumbers.forEach((number) => randomPokemons.push(pokemons[number]));
+    setRandomPokemons(randomPokemons);
+  };
+
+  const handlePokemonDraw = () => {
+    choseRandomPokemons();
+    setChange(true);
+  };
+  if (!randomPokemons) {
+    return <h1>Loading...</h1>;
+  }
   return (
-    <>
-      <div className="mainTitle">
-        <h1>Choose your pokemon!</h1>
+    <div className="start-page">
+      <div className="start-page_col">
+        <h1 className="rules">Rules</h1>
+        <ol>
+          <li className="rules-item">Press start game</li>
+          <li className="rules-item">Chose one of the provided pokemons</li>
+          <li className="rules-item">Or press 'Change' to change pokemons</li>
+          <li className="rules-item">Enemy pokemon will be chosen randomly</li>
+          <li className="rules-item">See results on next page</li>
+        </ol>
       </div>
-      <div className="poke-slider">
-        <Carousel>
-          {pokemons.map((pokemon) => (
-            <Carousel.Item key={pokemon.id}>
-              <div className="poke-items">
-                <h1 className="poke-name">{pokemon.name.english}</h1>
-                <img
-                  className="poke-photo"
-                  src="https://images.pexels.com/photos/1716861/pexels-photo-1716861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  alt="{pokemon.name.english}"
-                />
-              </div>
-              <Stack direction="horizontal" gap={3} className="poke-links">
-                <Link to={`/pokemon/${pokemon.id}`} className="poke-info">
-                  Info
-                </Link>
-                <div className="vr" />
-                <Link
-                  to={`/arena`}
-                  className="poke-fight"
-                  onClick={chosePokemon}
-                  payload={pokemon.id}
-                >
-                  FIGHT
-                </Link>
-              </Stack>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+      <div className="start-page_col start-page_pokemons">
+        <Button className="start-btn" onClick={handlePokemonDraw}>
+          {change ? "Change" : "Start game"}{" "}
+        </Button>
+        {randomPokemons.map((pokemon, index) => {
+          return (
+            <Link
+              key={index}
+              to={`/arena`}
+              className="pokemon-to-choose"
+              onClick={chosePokemon}
+              payload={pokemon.id}
+            >
+              {pokemon.name.english}
+            </Link>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
-}
+};
+export default AllPokemons;
