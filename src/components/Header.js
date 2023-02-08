@@ -8,9 +8,9 @@ function Header({ pokemons }) {
   return (
     <>
       <Navbar
-        className="border-0 shadow-none"
-        bg="primary"
-        variant="dark"
+        className="border-0 shadow-none img-bg"
+        // bg="primary"
+        // variant="dark"
         collapseOnSelect
         // fixed="top"
       >
@@ -20,18 +20,18 @@ function Header({ pokemons }) {
               src={logo}
               width="250"
               height="45"
-              className="d-inline-block align-top"
+              className="d-inline-block align-top logo"
               alt="Pokemon fight logo"
             />
           </Navbar.Brand>
-          <Nav className="ml-auto">
+          {/* <Nav className="ml-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/pokemons">Pokedex</Nav.Link>
-            {/* <Nav.Link href="/arena">
+            <Nav.Link href="/pokemons">Pokedex</Nav.Link> */}
+          {/* <Nav.Link href="/arena">
               <i className="fa-solid fa-swords"></i> Arena
             </Nav.Link> */}
-            {/* <Nav.Link href="/logs">Logs</Nav.Link> */}
-          </Nav>
+          {/* <Nav.Link href="/logs">Logs</Nav.Link> */}
+          {/* </Nav> */}
         </Container>
       </Navbar>
     </>

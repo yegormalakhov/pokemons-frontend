@@ -4,15 +4,12 @@ import { Container, Row, Col } from "react-bootstrap";
 const Footer = () => {
   return (
     <footer>
-        <Container className="poke-footer">
-            <Row>
-                <Col className="py-5">
-                    Copyright & copy: Eike & Yegor Team!
-                </Col>
-            </Row>
-        </Container>
+      <div className="footer-copyright text-center py-3">
+        © 2022 Copyright:
+        <p> Eike & Yegor Team!</p>
+      </div>
     </footer>
-  )
+  );
 };
 
 export default Footer;

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import CalculateWinner from "./CalculateWinner";
+import GoBack from "./GoBack";
 
 const Arena = ({ userPokemon, pokemons }) => {
   const [enemyImage, setEnemyImage] = useState();
@@ -52,15 +53,16 @@ const Arena = ({ userPokemon, pokemons }) => {
       <h1 className="arenaTitle">Match between</h1>
       <div className="matchCards">
         <Card className="one-poke-card">
-          <Card.Header className="one-poke-header">
+          <Card.Header id="one-poke-header">
             <h2>{findUserPokemon.name.english}</h2>
           </Card.Header>
 
           <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
+            className="card-body"
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            // }}
           >
             <div style={{ display: "flex", width: "50%" }}>
               <Card.Img
@@ -97,15 +99,16 @@ const Arena = ({ userPokemon, pokemons }) => {
         <p className="VS">VS</p>
 
         <Card className="one-poke-card">
-          <Card.Header className="one-poke-header">
+          <Card.Header id="one-poke-header">
             <h2>{findEnemyPokemon.name.english}</h2>
           </Card.Header>
 
           <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
+            className="card-body"
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            // }}
           >
             <div style={{ display: "flex", width: "50%" }}>
               <Card.Img
@@ -141,10 +144,13 @@ const Arena = ({ userPokemon, pokemons }) => {
       {/* <div className="resultBtn" onClick={() => setResult(!showResult)}>
         Find result
       </div> */}
-      <CalculateWinner
-        userPokemon={findUserPokemon}
-        enemyPokemon={findEnemyPokemon}
-      />
+      <div className="arena-result-container">
+        <CalculateWinner
+          userPokemon={findUserPokemon}
+          enemyPokemon={findEnemyPokemon}
+        />
+        <GoBack />
+      </div>
     </>
   );
 };

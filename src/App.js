@@ -19,7 +19,7 @@ const App = () => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [userPokemon, setUserPokemon] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  
+
   //set user pokemon state
   const handleChoice = (e) => {
     const targetPokemonId = e.target.attributes.payload.value;
@@ -75,7 +75,6 @@ const App = () => {
 
       <div className="main-container">
         <div className="poke-body">
-         
           <Routes>
             <Route
               path="/"

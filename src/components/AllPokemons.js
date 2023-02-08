@@ -12,7 +12,7 @@ const AllPokemons = ({ pokemons, chosePokemon }) => {
 
   const choseRandomPokemons = () => {
     let randomNumbers = [];
-    for (let i = 0; i !== 5; i++) {
+    for (let i = 0; i !== 4; i++) {
       randomNumbers.push(Math.ceil(Math.random() * 809));
     }
     console.log(pokemons[randomNumbers[1]]);
