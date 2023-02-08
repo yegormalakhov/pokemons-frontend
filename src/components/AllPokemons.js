@@ -1,9 +1,5 @@
-// import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-// import { async } from "q";
-import Stack from "react-bootstrap/Stack";
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AllPokemons = ({ pokemons, chosePokemon }) => {

@@ -7,9 +7,9 @@ const GoBack = () => {
     <Button
       className="btn-primary btn"
       variant="outlined"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate("/")}
     >
-      Go Back
+      Start page
     </Button>
   );
 };

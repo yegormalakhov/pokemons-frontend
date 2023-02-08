@@ -1,4 +1,3 @@
-import { Button } from "bootstrap";
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -57,13 +56,7 @@ const Arena = ({ userPokemon, pokemons }) => {
             <h2>{findUserPokemon.name.english}</h2>
           </Card.Header>
 
-          <div
-            className="card-body"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            // }}
-          >
+          <div className="card-body">
             <div style={{ display: "flex", width: "50%" }}>
               <Card.Img
                 variant="top"
@@ -103,13 +96,7 @@ const Arena = ({ userPokemon, pokemons }) => {
             <h2>{findEnemyPokemon.name.english}</h2>
           </Card.Header>
 
-          <div
-            className="card-body"
-            // style={{
-            //   display: "flex",
-            //   justifyContent: "center",
-            // }}
-          >
+          <div className="card-body">
             <div style={{ display: "flex", width: "50%" }}>
               <Card.Img
                 variant="top"
@@ -141,9 +128,6 @@ const Arena = ({ userPokemon, pokemons }) => {
           </div>
         </Card>
       </div>
-      {/* <div className="resultBtn" onClick={() => setResult(!showResult)}>
-        Find result
-      </div> */}
       <div className="arena-result-container">
         <CalculateWinner
           userPokemon={findUserPokemon}

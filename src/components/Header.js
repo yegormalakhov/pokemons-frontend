@@ -9,10 +9,7 @@ function Header({ pokemons }) {
     <>
       <Navbar
         className="border-0 shadow-none img-bg"
-        // bg="primary"
-        // variant="dark"
         collapseOnSelect
-        // fixed="top"
       >
         <Container className="navbar-items">
           <Navbar.Brand href="/">
