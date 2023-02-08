@@ -11,7 +11,6 @@ const AllPokemons = ({ pokemons, chosePokemon }) => {
     for (let i = 0; i !== 4; i++) {
       randomNumbers.push(Math.ceil(Math.random() * 809));
     }
-    console.log(pokemons[randomNumbers[1]]);
     let randomPokemons = [];
     randomNumbers.forEach((number) => randomPokemons.push(pokemons[number]));
     setRandomPokemons(randomPokemons);
@@ -41,6 +40,7 @@ const AllPokemons = ({ pokemons, chosePokemon }) => {
           {change ? "Change" : "Start game"}{" "}
         </Button>
         {randomPokemons.map((pokemon, index) => {
+          console.log(pokemon.id);
           return (
             <Link
               key={index}
