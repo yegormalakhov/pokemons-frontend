@@ -47,10 +47,12 @@ const App = () => {
       .catch((err) => console.log({ fetchAllArticlesError: err.message }));
   }, []);
 
-  if (!allPokemons) {
+  // if (!allPokemons) {
+  //   return <h1>Loading...</h1>;
+  // }
+ if (allPokemons.length === 0) {
     return <h1>Loading...</h1>;
   }
-
   return (
     <>
       <div style={{ position: "relative" }}>
